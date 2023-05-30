@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Book Shop</title> {% endblock %}
+
+{% block body %} 
+
+<nav class="navbar navbar-dark bg-dark fixed-top p-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Book Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">This is a book Shop</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/your_books/">Your books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/your_books_api/">Your books API</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<br><br>
+<h1 class="text-center mt-5">Your books</h1>
+<br>
+<div class="container">
+    <form action="/your_books/" method="POST">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title of the Book</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Publication Year</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Remove a Book</th>
+                </tr>
+            </thead>
+                <tbody>
+                    {% for book in your_books %}
+                        <tr>
+                            <th scope="row">{{ book.id_your }}</th>
+                            <td>{{ book.title_your }}</td>
+                            <td>{{ book.author_your }}</td>
+                            <td>{{ book.publication_year_your }}</td>
+                            <td>{{ book.quantity }}</td>
+                            <td><a href="/delete_your/{{ book.id_your }}"><i class="fas fa-trash"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </form>
+</div>
+
+<style>
+    .table a{
+        color: inherit;
+        text-decoration: none; 
+    }  
+    .table a:hover{
+        color: rgba(255, 255, 255, 0.209);
+        text-decoration: none; 
+    } 
+</style>
+{% endblock %}

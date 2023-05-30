@@ -1,0 +1,5 @@
+# python -m pip install "flask-marshmallow[sqlalchemy]==0.14.0"
+# pip install Flask
+# pip install Flask-SQLAlchemy
+# pip install Flask-FontAwesome
+# pip install Flask-RESTful

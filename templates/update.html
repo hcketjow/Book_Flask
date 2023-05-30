@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Book Shop</title> {% endblock %}
+
+{% block body %} 
+<h1 class="text-center">Book Store</h1>
+<h4 class="text-center">Update your data</h4>
+<div class="container mt-5">
+    <form action="/update/{{ book.id }}" method="POST">
+        <div class="row mt-5">
+            <div class="col-4">
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="bookTitle" 
+                        id="bookTitle" 
+                        placeholder="Type book name"
+                        value="{{ book.title }}"
+                    >
+                    <label for="bookTitle">Book name</label>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="bookAuthor" 
+                        id="bookAuthor" 
+                        placeholder="Type an author of a book"
+                        value="{{ book.author }}"
+                    >
+                    <label for="bookAuthor">Author of a book</label>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-floating mb-3">
+                    <input 
+                        type="datetime" 
+                        class="form-control" 
+                        name="publicationYear" 
+                        id="publicationYear" 
+                        placeholder="Type a publication year"
+                        value="{{ book.publication_year }}"
+                    >
+                    <label for="publicationYear">Publication Year</label>
+                </div>
+            </div>
+           <input 
+                type="submit" 
+                value="Update a Book"
+                class="form-control"
+            >
+        </div>
+    </form>
+</div>
+{% endblock %}
