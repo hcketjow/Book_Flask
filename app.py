@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_fontawesome import FontAwesome
 from flask_restful import Resource, Api
-import json
 
 app = Flask(__name__)
 fa = FontAwesome(app)
@@ -47,7 +46,6 @@ def index():
             return redirect('/')
         except Exception as e:
             return f'Error adding the book to the database: {str(e)}'
-
     else:
         books = Book.query.order_by(Book.publication_year.desc()).all()
         return render_template('index.html', books=books)
